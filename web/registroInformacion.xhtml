@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>PrimeFaces</title>
+            </f:facet>
+        </h:head>
+        <h:body>
+            <p:layout fullPage="true">
+
+                <p:layoutUnit position="north" style="background-color: blue">
+                    <h:form>
+                        <h3>SCHEDULE TOOL</h3>
+                        
+                    </h:form>
+                </p:layoutUnit>
+                <p:layoutUnit position="west" resizable="true" style="background-color: blue">
+                    <h:form>
+                        <p:panel id="prueba" header="Calculo integral" toggleable="true" toggleSpeed="500" widgetVar="panel">
+                            <h:panelGrid columns="2" cellpadding="10">
+                                <h:outputText value="Creditos: " />
+                                <h:outputText value="3" />
+                            </h:panelGrid>
+                        </p:panel>
+                    </h:form>
+                </p:layoutUnit>
+
+                <p:layoutUnit position="center" style="background-color: blue">
+
+                    <h:form>
+                        <br></br>
+                        <p:panelGrid style="width: 100%;" >
+                            <p:row>
+                                <p:column width="60"></p:column>
+                                <p:column>LUNES</p:column>
+                                <p:column>MARTES</p:column>
+                                <p:column>MIERCOLES</p:column>
+                                <p:column>JUEVES</p:column>
+                                <p:column>VIERNES</p:column>
+                            </p:row>
+
+                            <p:row>
+                                <p:column>18:00 - 19:00</p:column>
+                                <p:column></p:column>
+                                <p:column></p:column>
+                                <p:column></p:column>
+                                <p:column></p:column>
+                                <p:column></p:column>
+                            </p:row>
+
+                            <p:row>
+                                <p:column>19:00 - 20:00</p:column>
+                                <p:column></p:column>
+                                <p:column></p:column>
+                                <p:column></p:column>
+                                <p:column></p:column>
+                                <p:column></p:column>
+                            </p:row>
+
+                            <p:row>
+                                <p:column>20:00 - 21:00</p:column>
+                                <p:column></p:column>
+                                <p:column></p:column>
+                                <p:column></p:column>
+                                <p:column></p:column>
+                                <p:column></p:column>
+                            </p:row>
+
+                            <p:row>
+                                <p:column>21:00 - 22:00</p:column>
+                                <p:column></p:column>
+                                <p:column></p:column>
+                                <p:column></p:column>
+                                <p:column></p:column>
+                                <p:column></p:column>
+                            </p:row>                            
+                        </p:panelGrid>
+                    </h:form>
+                </p:layoutUnit>               
+
+            </p:layout>
+        </h:body>
+    </f:view>
+</html>
