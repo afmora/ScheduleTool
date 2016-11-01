@@ -17,13 +17,15 @@ public class UsuarioMB {
     private DaoUsuario du;
     private Usuario u;
     private int id;
-    private String usuario;
+    private String nombre;
+    private String apellido;
+    private String alias;
     private String contrasenna;
 
     public UsuarioMB() throws SQLException, ClassNotFoundException {
         //dlg = new DaoLogin();
         u = new Usuario();
-        usuario = null;
+        alias = null;
         contrasenna =null;
         id = 0;
     }
@@ -36,12 +38,28 @@ public class UsuarioMB {
         this.id = id;
     }
 
-    public String getUsuario() {
-        return usuario;
+    public String getNombre() {
+        return nombre;
     }
 
-    public void setUsuario(String usuario) {
-        this.usuario = usuario;
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
+
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+    
+    public String getAlias() {
+        return alias;
+    }
+
+    public void setAlias(String alias) {
+        this.alias = alias;
     }
 
     public String getContrasenna() {
@@ -62,13 +80,13 @@ public class UsuarioMB {
 
     public void login() throws SQLException, ClassNotFoundException {
         du = new DaoUsuario();
-        u.setAlias(usuario);
+        u.setAlias(alias);
         u.setContrasenna(contrasenna);
         FacesMessage msg = null;
         int j = du.leerRegistro(1);
         
         if(j == 1) {
-            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", usuario);            
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", alias);            
         } else {
             msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
                     "Credenciales no válidas");            
@@ -80,19 +98,21 @@ public class UsuarioMB {
     }
     public void registrar() throws SQLException, ClassNotFoundException {
         du = new DaoUsuario();
-        u.setAlias(usuario);
+        u.setIdUsuario(id);
+        u.setNombre(nombre);
+        u.setApellido(apellido);
+        u.setAlias(alias);
         u.setContrasenna(contrasenna);
-        RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage msg = null;
         int resultado = du.registrar(u);
         
         if(resultado == 1) {
-            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro exitoso: ", u.getAlias());
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro exitoso: ", u.getAlias());            
         } else {
-            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Usuario incorrecto",
-                    "Ingrese un usuario válido");            
+            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "El alias " + u.getAlias() + " ya existe", 
+            "Vuelva a intentarlo");
         }
         FacesContext.getCurrentInstance().addMessage(null, msg);
-    }
+    }    
 
 }

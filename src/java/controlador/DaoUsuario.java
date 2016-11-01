@@ -17,6 +17,7 @@ public class DaoUsuario{
     public int guardar(Usuario usuario) throws SQLException {
         preparedStatement=null;
         int resultado=0;
+        
         preparedStatement=connection.prepareStatement("INSERT  INTO  usuario(nombres,apellidos,alias,contrasenna) VALUES (?,?,?,?)");
         preparedStatement.setString(1,usuario.getNombre());
         preparedStatement.setString(2,usuario.getApellido());
@@ -27,15 +28,24 @@ public class DaoUsuario{
         return resultado;        
     }
     public int registrar(Usuario usuario) throws SQLException {
+        ResultSet resultSet=null;
         preparedStatement=null;
         int resultado=1;
-        preparedStatement=connection.prepareStatement("INSERT  INTO  usuario(nombres,apellidos,alias,contrasenna) VALUES (?,?,?,?)");
-        preparedStatement.setString(1,usuario.getNombre());
-        preparedStatement.setString(2,usuario.getApellido());
-        preparedStatement.setString(3,usuario.getAlias());
-        preparedStatement.setString(4,usuario.getContrasenna());
-        resultado=preparedStatement.executeUpdate();
-        preparedStatement.close();
+        preparedStatement= connection.prepareStatement("SELECT * FROM usuario where alias=?");
+        preparedStatement.setString(1, usuario.getAlias());
+        resultSet=preparedStatement.executeQuery();
+        if(resultSet.next()){
+            resultado=0;
+        }else{
+            preparedStatement=connection.prepareStatement("INSERT INTO usuario(nombres,apellidos,alias,contrasenna) VALUES (?,?,?,?)");
+            preparedStatement.setString(1,usuario.getNombre());
+            preparedStatement.setString(2,usuario.getApellido());
+            preparedStatement.setString(3,usuario.getAlias());
+            preparedStatement.setString(4,usuario.getContrasenna());
+            resultado=preparedStatement.executeUpdate();
+            preparedStatement.close();
+        }
+        
         return resultado;        
     }
 
