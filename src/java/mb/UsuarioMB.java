@@ -113,6 +113,7 @@ public class UsuarioMB {
             "Vuelva a intentarlo");
         }
         FacesContext.getCurrentInstance().addMessage(null, msg);
-    }    
+    }
+    
 
 }

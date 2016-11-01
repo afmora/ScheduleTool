@@ -82,8 +82,8 @@ public class DaoUsuario{
         while (resultSet.next()){
             usuario= new Usuario();
             usuario.setIdUsuario(resultSet.getInt("idusuario"));
-            usuario.setNombre(resultSet.getString("nombre"));
-            usuario.setApellido(resultSet.getString("apellido"));
+            usuario.setNombre(resultSet.getString("nombres"));
+            usuario.setApellido(resultSet.getString("apellidos"));
             usuario.setAlias(resultSet.getString("alias"));
             usuario.setContrasenna(resultSet.getString("contrasenna"));
             System.out.println(usuario.toString());

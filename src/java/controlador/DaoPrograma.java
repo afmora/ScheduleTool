@@ -53,11 +53,11 @@ public class DaoPrograma {
         resultSet=preparedStatement.executeQuery();
         while (resultSet.next()){
             programa= new Programa();
-            programa.setIdPrograma(resultSet.getInt("idusuario"));
+            programa.setIdPrograma(resultSet.getInt("idprograma"));
             programa.setNombre(resultSet.getString("nombre"));
             System.out.println(programa.toString());
             resultado = 1;
-        }                
+        }
         resultSet.close();
         preparedStatement.close();
         return resultado;
@@ -72,7 +72,7 @@ public class DaoPrograma {
         resultSet=preparedStatement.executeQuery();
         while (resultSet.next()){
             programa= new Programa();
-            programa.setIdPrograma(resultSet.getInt("idusuario"));
+            programa.setIdPrograma(resultSet.getInt("idprograma"));
             programa.setNombre(resultSet.getString("nombre"));
             libroArrayList.add(programa);
         }

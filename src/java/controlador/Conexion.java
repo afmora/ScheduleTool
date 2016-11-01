@@ -10,7 +10,7 @@ public class Conexion {
 
     public Conexion() throws ClassNotFoundException, SQLException {
         Class.forName("org.postgresql.Driver");
-        cx= DriverManager.getConnection("jdbc:postgresql://localhost:5432/Pruebas","postgres","12345");
+        cx= DriverManager.getConnection("jdbc:postgresql://localhost:5432/ScheduleTool","postgres","12345");
     }
     
     public static Connection getConnection() throws SQLException, ClassNotFoundException {

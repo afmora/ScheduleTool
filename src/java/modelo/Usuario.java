@@ -51,4 +51,9 @@ public class Usuario {
     public void setContrasenna(String contrasenna) {
         this.contrasenna = contrasenna;
     }
+    
+    @Override
+    public String toString() {
+        return "Id: " + idUsuario + ", Nombre: " + nombre + ", Apellido: " + apellido + ", Alias: " + alias + ", Contraseña: " + contrasenna;
+    }
 }
