@@ -22,11 +22,13 @@
                         <p:panel header="Login" style="width:400px">
                             <h:panelGrid columns="2" cellpadding="5">
                                 <h:outputLabel for="username" value="Usuario:" />
-                                <p:inputText id="username" required="true" label="username" />
+                                <p:inputText value="" id="username"
+                                             required="true" label="username" />
                                 <h:outputLabel for="password" value="Clave:" />
-                                <p:password id="password" required="true" label="password" />
+                                <p:password value="#{loginMB.password}" id="password" 
+                                            required="true" label="password" />
                                 <p:commandButton id="login" type="submit" value="Ingresar"
-                                                 styleClass="Fs16" ajax="false"/>
+                                                 styleClass="Fs16" actionListener="#{loginMB.login()}" ajax="false"/>
                             </h:panelGrid>                            
                             <h:link outcome="olvidarContrasena" value="Registrarse"/>
                         </p:panel>

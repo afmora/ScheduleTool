@@ -1,6 +1,5 @@
 package mb;
 
-import controlador.DaoPrograma;
 import controlador.DaoUsuario;
 import java.sql.SQLException;
 import javax.faces.bean.ManagedBean;
@@ -65,7 +64,6 @@ public class UsuarioMB {
         du = new DaoUsuario();
         u.setAlias(usuario);
         u.setContrasenna(contrasenna);
-        RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage msg = null;
         int j = du.leerRegistro(1);
         
@@ -82,15 +80,14 @@ public class UsuarioMB {
     }
     public void registrar() throws SQLException, ClassNotFoundException {
         du = new DaoUsuario();
-        u.setNombre();
         u.setAlias(usuario);
         u.setContrasenna(contrasenna);
         RequestContext context = RequestContext.getCurrentInstance();
         FacesMessage msg = null;
-        String contrasena = du.consultar(u);
+        int resultado = du.registrar(u);
         
-        if(du.getResultado() == 1) {
-            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Su contraseña es: ", contrasena);
+        if(resultado == 1) {
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro exitoso: ", u.getAlias());
         } else {
             msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Usuario incorrecto",
                     "Ingrese un usuario válido");            

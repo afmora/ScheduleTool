@@ -28,7 +28,7 @@ public class DaoUsuario{
     }
     public int registrar(Usuario usuario) throws SQLException {
         preparedStatement=null;
-        int resultado=0;
+        int resultado=1;
         preparedStatement=connection.prepareStatement("INSERT  INTO  usuario(nombres,apellidos,alias,contrasenna) VALUES (?,?,?,?)");
         preparedStatement.setString(1,usuario.getNombre());
         preparedStatement.setString(2,usuario.getApellido());
