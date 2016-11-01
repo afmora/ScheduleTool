@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+ <f:view contentType="text/html">
+    <h:head>
+        <f:facet name="first">
+            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+            <title>Login</title>
+        </f:facet>
+        <link rel="StyleSheet" type="text/css" href="styles.css" media="screen" />
+    </h:head>
+
+     <h:body style="background: black;" >
+        <p:layout fullPage="true" >
+
+            <p:layoutUnit  position="north" style="background: white;  " >
+                <a href="paginaPrincipal.xhtml"></a>
+               
+                    <h:panelGrid  style="background: darkgreen;width: 100%;">
+                        <h1 style="color: white;">ScheduleTool Universidad El Bosque</h1>
+                    </h:panelGrid>
+                
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" size="300"  collapsible="true"  >
+                <h:form >
+                    <h:panelGrid style="background: darkgreen; width: 100%;  ">
+                       
+
+<p:graphicImage name="ScheduleTool/src/java/imagenes/logo_universidad.jpg" />
+                                             
+                    </h:panelGrid>
+                </h:form>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                    <h:form>
+                        <p:growl id="mensajes" showDetail="true" life="2000" />
+                        <p:panel header="Login" style="width:400px">
+                            <h:panelGrid columns="2" cellpadding="5">
+                                <h:outputLabel for="username" value="Usuario:" />
+                                <p:inputText id="username"
+                                             required="true" label="username" />
+                                <h:outputLabel for="password" value="Clave:" />
+                                <p:password id="password" 
+                                            required="true" label="password" />
+                                <p:commandButton id="login" type="submit" value="Ingresar"
+                                                 styleClass="Fs16" ajax="false"/>
+                            </h:panelGrid>                            
+                            <h:link outcome="vistaRegistro" value="Registrarse"/>
+                        </p:panel>
+                    </h:form>
+                </p:layoutUnit>
+
+
+
+
+       </p:layout>
+    </h:body>
+
+
+ </f:view>
+</html>

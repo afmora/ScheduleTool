@@ -1,15 +1,15 @@
-<?xml version='1.0' encoding='UTF-8' ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
-    
+
     <f:view contentType="text/html">
         <h:head>
             <f:facet name="first">
                 <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-                <title>Login</title>
+                <title>PrimeFaces</title>
             </f:facet>
         </h:head>
 
@@ -22,15 +22,15 @@
                         <p:panel header="Login" style="width:400px">
                             <h:panelGrid columns="2" cellpadding="5">
                                 <h:outputLabel for="username" value="Usuario:" />
-                                <p:inputText value="" id="username"
+                                <p:inputText id="username"
                                              required="true" label="username" />
                                 <h:outputLabel for="password" value="Clave:" />
-                                <p:password value="#{loginMB.password}" id="password" 
+                                <p:password id="password" 
                                             required="true" label="password" />
                                 <p:commandButton id="login" type="submit" value="Ingresar"
-                                                 styleClass="Fs16" actionListener="#{loginMB.login()}" ajax="false"/>
+                                                 styleClass="Fs16" ajax="false"/>
                             </h:panelGrid>                            
-                            <h:link outcome="olvidarContrasena" value="Registrarse"/>
+                            <h:link outcome="olvidarContrasena" value="Olvidaste tu contraseña?"/>
                         </p:panel>
                     </h:form>
                 </p:layoutUnit>
@@ -41,3 +41,4 @@
 
     </f:view>
 </html>
+

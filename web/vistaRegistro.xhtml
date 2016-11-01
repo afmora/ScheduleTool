@@ -1,0 +1,62 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Registro</title>
+            </f:facet>
+        </h:head>
+        <h:body>
+            <p:layout fullPage="true" >
+            <p:layoutUnit  position="north" style="background: black;  " >
+                <a href="paginaPrincipal.xhtml"></a>
+                <h:form >
+                    <h:panelGrid style="background: darkgreen; width: 100%;   ">
+                        <h1 style="color: white;">ScheduleTool Universidad El Bosque</h1>
+                    </h:panelGrid>
+                </h:form>
+            </p:layoutUnit>
+
+            
+            <p:layoutUnit  position="center">
+
+            <h:form style=" margin-left: 40%; margin-top: 150px;">
+                
+                
+       
+<p:panel header="Registro" style="width:380px">
+          <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10"  styleClass="ui-panelgrid-blank" >
+       
+           
+        
+                <h:outputLabel for="nombre" value="Nombre:" /> 
+                <p:inputText id="nombre" />
+               
+                <h:outputLabel for="apellido" value="Apellido:" />
+                <p:inputText id="apellido" />
+               
+                <h:outputLabel for="alias" value="Alias:" />
+                <p:inputText id="alias" />
+              
+                <h:outputLabel for="pwd1" value="Password:" />
+                <p:password id="pwd1" value="" match="pwd2" label="Password 1" required="true" />
+
+                <h:button id="registro" value="Registrar"/>
+                <h:button id="cancelar" value="Cancelar"/>
+                
+                        
+
+                </p:panelGrid>
+  </p:panel>
+            </h:form>
+            </p:layoutUnit>
+</p:layout>
+        </h:body>
+    </f:view>
+</html>

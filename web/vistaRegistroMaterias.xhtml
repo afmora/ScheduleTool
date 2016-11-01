@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head >
+        <title>Registro Materias</title>
+    </h:head>
+    <h:body style="background: black;">
+
+        <p:layout fullPage="true" >
+ <h:form >
+            <p:layoutUnit   position="north" style="background: white;  " >             
+                <h:form style="background: darkgreen;">
+                    <h:panelGrid style="background: darkgreen; width: 100%;   ">
+                        <h1 style="color: white;">ScheduleTool Universidad El Bosque</h1>
+                    </h:panelGrid>
+                </h:form>
+            </p:layoutUnit>
+
+     <p:layoutUnit position="west" style="background: white;" >
+        
+                    <h:panelGrid  columns="2" cellpadding="5" width="600px">
+
+                        <h:outputLabel  for="menu" value="Seleccione materias VISTAS y APROBADAS  " />
+                    </h:panelGrid>
+                    <h:panelGrid columns="3" cellpadding="5" >
+
+                        <p:selectCheckboxMenu id="menu" value="#{vistaRegistroMateriasMB.selectedCities}" label="Materias"
+                                              filter="true" filterMatchMode="startsWi#th" panelStyle="width:250px">
+                            <f:selectItems value="#{vistaRegistroMateriasMB.cities}" />
+                        </p:selectCheckboxMenu>
+                    </h:panelGrid>
+                    <h:panelGrid columns="3" cellpadding="5" style="margin-top: 350px;">
+                        <p:commandButton value="Listar" update="display" icon="ui-icon-check"   />
+                        <p:commandButton value="Guardar" update="display" icon="ui-icon-disk"  />
+                        <p:spacer />
+                    </h:panelGrid>
+               
+            </p:layoutUnit>
+            
+            
+            <p:layoutUnit position="center">
+               
+                   <h:panelGrid>
+                <p:outputPanel id="display" style="width:250px;padding-left:5px;margin-top:10px">
+                    <p:dataList value="#{vistaRegistroMateriasMB.selectedCities}" var="city" emptyMessage="Seleccione Materias">
+                        #{city}
+                    </p:dataList>
+                </p:outputPanel>
+                       
+                       
+                   </h:panelGrid>
+                   
+            </p:layoutUnit>
+
+</h:form> 
+        </p:layout>
+    </h:body>
+</html>
