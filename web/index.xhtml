@@ -5,63 +5,57 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
 
- <f:view contentType="text/html">
-    <h:head>
-        <f:facet name="first">
-            <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
-            <title>Login</title>
-        </f:facet>
-        <link rel="StyleSheet" type="text/css" href="styles.css" media="screen" />
-    </h:head>
+    <f:view contentType="text/html">
+        <h:head>
+            <f:facet name="first">
+                <meta content='text/html; charset=UTF-8' http-equiv="Content-Type"/>
+                <title>Login</title>
+                <script type="text/javascript" src="javascript/funciones.js"></script>
+            </f:facet>
+            <link rel="StyleSheet" type="text/css" href="styles.css" media="screen" />
+        </h:head>
 
-     <h:body style="background: black;" >
-        <p:layout fullPage="true" >
+        <h:body style="background: black;" >
+            <p:layout fullPage="true" >
 
-            <p:layoutUnit  position="north" style="background: white;  " >
-                <a href="paginaPrincipal.xhtml"></a>
-               
+                <p:layoutUnit  position="north" style="background: white;  " >
+                    <a href="paginaPrincipal.xhtml"></a>
+
                     <h:panelGrid  style="background: darkgreen;width: 100%;">
                         <h1 style="color: white;">ScheduleTool Universidad El Bosque</h1>
                     </h:panelGrid>
-                
-            </p:layoutUnit>
 
-            <p:layoutUnit position="west" size="300"  collapsible="true"  >
-                <h:form >
-                    <h:panelGrid style="background: darkgreen; width: 100%;  ">
-                       
+                </p:layoutUnit>
 
-<p:graphicImage name="ScheduleTool/src/java/imagenes/logo_universidad.jpg" />
-                                             
-                    </h:panelGrid>
-                </h:form>
-            </p:layoutUnit>
+                <p:layoutUnit position="west" size="300"  collapsible="true"  >
+                    <h:form >
+                        <h:panelGrid style="background: darkgreen; width: 100%;  ">
+                            <p:graphicImage name="ScheduleTool/src/java/imagenes/logo_universidad.jpg" />
+                        </h:panelGrid>
+                    </h:form>
+                </p:layoutUnit>
 
-            <p:layoutUnit position="center">
+                <p:layoutUnit position="center">
                     <h:form>
                         <p:growl id="mensajes" showDetail="true" life="2000" />
                         <p:panel header="Login" style="width:400px">
                             <h:panelGrid columns="2" cellpadding="5">
                                 <h:outputLabel for="username" value="Usuario:" />
-                                <p:inputText id="username"
+                                <p:inputText value="#{usuarioMB.alias}" id="username"
                                              required="true" label="username" />
                                 <h:outputLabel for="password" value="Clave:" />
-                                <p:password id="password" 
+                                <p:password value="#{usuarioMB.contrasenna}" id="password" 
                                             required="true" label="password" />
                                 <p:commandButton id="login" type="submit" value="Ingresar"
-                                                 styleClass="Fs16" ajax="false"/>
-                            </h:panelGrid>                            
-                            <h:link outcome="vistaRegistro" value="Registrarse"/>
+                                                 actionListener="#{usuarioMB.login()}" styleClass="Fs16" ajax="false"/>
+                            </h:panelGrid>
+                            <h:link outcome="vistaRegistro" value="Registrarse" style="background-color: blue"/>
                         </p:panel>
                     </h:form>
                 </p:layoutUnit>
+            </p:layout>
+        </h:body>
 
 
-
-
-       </p:layout>
-    </h:body>
-
-
- </f:view>
+    </f:view>
 </html>

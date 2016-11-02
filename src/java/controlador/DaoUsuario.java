@@ -71,13 +71,14 @@ public class DaoUsuario{
         return  resultado;
 
     }
-    public int leerRegistro(int id) throws SQLException{
+    public int leerRegistro(Usuario u) throws SQLException{
         Usuario usuario=null;
         int resultado = 0;
         preparedStatement=null;
         ResultSet resultSet=null;
-        preparedStatement= connection.prepareStatement("SELECT * FROM usuario where idusuario=?");
-        preparedStatement.setInt(1, id);
+        preparedStatement= connection.prepareStatement("SELECT * FROM usuario where alias=?,contrasenna=?");
+        preparedStatement.setString(1, u.getAlias());
+        preparedStatement.setString(2, u.getContrasenna());
         resultSet=preparedStatement.executeQuery();
         while (resultSet.next()){
             usuario= new Usuario();
@@ -89,6 +90,22 @@ public class DaoUsuario{
             System.out.println(usuario.toString());
             resultado = 1;
         }                
+        resultSet.close();
+        preparedStatement.close();
+        return resultado;
+    }
+    
+    public int loguearse(Usuario u) throws SQLException{
+        int resultado = 0;
+        preparedStatement=null;
+        ResultSet resultSet=null;
+        preparedStatement= connection.prepareStatement("SELECT * FROM usuario where alias=?,contrasenna=?");
+        preparedStatement.setString(1, u.getAlias());
+        preparedStatement.setString(2, u.getContrasenna());
+        resultSet=preparedStatement.executeQuery();
+        if(resultSet.next()){
+            resultado = 1;
+        }
         resultSet.close();
         preparedStatement.close();
         return resultado;

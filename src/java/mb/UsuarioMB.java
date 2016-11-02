@@ -1,4 +1,4 @@
-package mb;
+package mb; 
 
 import controlador.DaoUsuario;
 import java.sql.SQLException;
@@ -6,7 +6,6 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
-import org.primefaces.context.RequestContext;
 
 import modelo.Usuario;
 
@@ -70,33 +69,29 @@ public class UsuarioMB {
         this.contrasenna = contrasenna;
     }
 
-    public Usuario getU() {
-        return u;
-    }
-
-    public void setU(Usuario u) {
-        this.u = u;
-    }
-
-    public void login() throws SQLException, ClassNotFoundException {
+    public String login() throws SQLException, ClassNotFoundException {
         du = new DaoUsuario();
         u.setAlias(alias);
         u.setContrasenna(contrasenna);
         FacesMessage msg = null;
-        int j = du.leerRegistro(1);
+        int j = du.loguearse(u);
         
         if(j == 1) {
-            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido", alias);            
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Bienvenido: ", alias);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+            return "vistaRegistroMaterias";
         } else {
             msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "Login Error",
-                    "Credenciales no válidas");            
+                    "Credenciales no válidas");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+        return null;
+        
     }
     public String regresar(){
 		return "vistaRegistroMateria";
     }
-    public void registrar() throws SQLException, ClassNotFoundException {
+    public String registrar() throws SQLException, ClassNotFoundException {
         du = new DaoUsuario();
         u.setIdUsuario(id);
         u.setNombre(nombre);
@@ -107,13 +102,14 @@ public class UsuarioMB {
         int resultado = du.registrar(u);
         
         if(resultado == 1) {
-            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro exitoso: ", u.getAlias());            
+            msg = new FacesMessage(FacesMessage.SEVERITY_INFO, "Registro exitoso: ", alias);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+            return"index";
         } else {
-            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "El alias " + u.getAlias() + " ya existe", 
+            msg = new FacesMessage(FacesMessage.SEVERITY_WARN, "El alias " + alias + " ya existe",
             "Vuelva a intentarlo");
+            FacesContext.getCurrentInstance().addMessage(null, msg);
         }
-        FacesContext.getCurrentInstance().addMessage(null, msg);
+        return null;
     }
-    
-
 }

@@ -14,49 +14,46 @@
         </h:head>
         <h:body>
             <p:layout fullPage="true" >
-            <p:layoutUnit  position="north" style="background: black;  " >
-                <a href="paginaPrincipal.xhtml"></a>
-                <h:form >
-                    <h:panelGrid style="background: darkgreen; width: 100%;   ">
-                        <h1 style="color: white;">ScheduleTool Universidad El Bosque</h1>
-                    </h:panelGrid>
-                </h:form>
-            </p:layoutUnit>
+                <p:layoutUnit  position="north" style="background: black;  " >
+                    <a href="paginaPrincipal.xhtml"></a>
+                    <h:form >
+                        <h:panelGrid style="background: darkgreen; width: 100%;   ">
+                            <h1 style="color: white;">ScheduleTool Universidad El Bosque</h1>
+                        </h:panelGrid>
+                    </h:form>
+                </p:layoutUnit>
 
-            
-            <p:layoutUnit  position="center">
 
-            <h:form style=" margin-left: 40%; margin-top: 150px;">
-                
-                
-       
-<p:panel header="Registro" style="width:380px">
-          <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10"  styleClass="ui-panelgrid-blank" >
-       
-           
-        
-                <h:outputLabel for="nombre" value="Nombre:" /> 
-                <p:inputText id="nombre" />
-               
-                <h:outputLabel for="apellido" value="Apellido:" />
-                <p:inputText id="apellido" />
-               
-                <h:outputLabel for="alias" value="Alias:" />
-                <p:inputText id="alias" />
-              
-                <h:outputLabel for="pwd1" value="Password:" />
-                <p:password id="pwd1" value="" match="pwd2" label="Password 1" required="true" />
+                <p:layoutUnit  position="center">
 
-                <h:button id="registro" value="Registrar"/>
-                <h:button id="cancelar" value="Cancelar"/>
-                
-                        
+                    <h:form style=" margin-left: 40%; margin-top: 150px;">
+                        <p:growl id="mensajes" showDetail="true" life="2000" />
 
-                </p:panelGrid>
-  </p:panel>
-            </h:form>
-            </p:layoutUnit>
-</p:layout>
+                        <p:panel header="Registro" style="width:380px">
+                            <p:panelGrid columns="2" columnClasses="ui-grid-col-2,ui-grid-col-10"  styleClass="ui-panelgrid-blank" >
+
+                                <h:outputLabel for="nombre" value="Nombre:" /> 
+                                <p:inputText id="nombre" value="#{usuarioMB.nombre}"/>
+
+                                <h:outputLabel for="apellido" value="Apellido:" />
+                                <p:inputText id="apellido" value="#{usuarioMB.apellido}"/>
+
+                                <h:outputLabel for="alias" value="Alias:" />
+                                <p:inputText id="alias" value="#{usuarioMB.alias}"/>
+
+                                <h:outputLabel for="pwd1" value="Password:" />
+                                <p:password id="pwd1" value="#{usuarioMB.contrasenna}" match="pwd2" label="Password 1" required="true" />
+
+                                <p:commandButton id="login" type="submit" value="Aceptar"
+                                                 actionListener="#{usuarioMB.registrar()}" styleClass="Fs16" ajax="false"/>
+                                <p:commandButton id="login" type="submit" value="Cancelar"
+                                                 actionListener="#{usuarioMB.regresar()}" styleClass="Fs16" ajax="false"/>
+
+                            </p:panelGrid>
+                        </p:panel>
+                    </h:form>
+                </p:layoutUnit>
+            </p:layout>
         </h:body>
     </f:view>
 </html>
