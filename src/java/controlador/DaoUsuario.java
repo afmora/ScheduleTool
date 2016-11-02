@@ -38,8 +38,8 @@ public class DaoUsuario{
             resultado=0;
         }else{
             preparedStatement=connection.prepareStatement("INSERT INTO usuario(nombres,apellidos,alias,contrasenna) VALUES (?,?,?,?)");
-            preparedStatement.setString(1,usuario.getNombre());
-            preparedStatement.setString(2,usuario.getApellido());
+            preparedStatement.setString(1,usuario.getNombre().toUpperCase());
+            preparedStatement.setString(2,usuario.getApellido().toUpperCase());
             preparedStatement.setString(3,usuario.getAlias());
             preparedStatement.setString(4,usuario.getContrasenna());
             resultado=preparedStatement.executeUpdate();

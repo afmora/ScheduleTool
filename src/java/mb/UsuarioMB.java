@@ -93,7 +93,6 @@ public class UsuarioMB {
     }
     public String registrar() throws SQLException, ClassNotFoundException {
         du = new DaoUsuario();
-        u.setIdUsuario(id);
         u.setNombre(nombre);
         u.setApellido(apellido);
         u.setAlias(alias);

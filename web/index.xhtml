@@ -41,15 +41,15 @@
                         <p:panel header="Login" style="width:400px">
                             <h:panelGrid columns="2" cellpadding="5">
                                 <h:outputLabel for="username" value="Usuario:" />
-                                <p:inputText value="#{usuarioMB.alias}" id="username"
-                                             required="true" label="username" />
+                                <p:inputText value="#{usuarioMB.alias}" id="alias"
+                                             required="true" label="alias" />
                                 <h:outputLabel for="password" value="Clave:" />
                                 <p:password value="#{usuarioMB.contrasenna}" id="password" 
                                             required="true" label="password" />
                                 <p:commandButton id="login" type="submit" value="Ingresar"
                                                  actionListener="#{usuarioMB.login()}" styleClass="Fs16" ajax="false"/>
                             </h:panelGrid>
-                            <h:link outcome="vistaRegistro" value="Registrarse" style="background-color: blue"/>
+                            <h:link outcome="vistaRegistro" value="Registrarse" style="color: blue"/>
                         </p:panel>
                     </h:form>
                 </p:layoutUnit>
